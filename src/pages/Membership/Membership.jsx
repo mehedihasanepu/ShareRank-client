@@ -1,6 +1,12 @@
 import Lottie from "lottie-react";
 import goldSub from "../../assets/icon/goldSubcribetion.json";
 import "./membership.css"
+import Subscription from "../../component/Subscription/Subscription";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK)
+
 const Membership = () => {
     return (
 
@@ -17,21 +23,24 @@ const Membership = () => {
 
                     <div className="flex justify-center my-5 gap-5">
 
-                        <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Subscribe</button>
+                        <button className="btn bg-blue-100" onClick={() => document.getElementById('my_modal_5').showModal()}>Subscribe</button>
                         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
 
 
                             <div className="modal-box">
 
-                                <div>
+                                <div className="pt-5">
                                     <h3 className="text-xl text-center font-semibold text-blue-950">
                                         Joining our Golden Subscription is easy!
                                     </h3>
-                                            
 
-                                    <button className="text-xl text-center font-semibold text-blue-950">
-                                        Pay $20
-                                    </button>
+                                    <div className="pt-8">
+                                        <Elements stripe={stripePromise}>
+                                            <Subscription></Subscription>
+                                        </Elements>
+                                    </div>
+
+                                 
                                 </div>
 
                                 <div className="modal-action">

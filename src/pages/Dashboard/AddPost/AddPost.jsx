@@ -148,7 +148,7 @@ const AddPost = () => {
                             </div>
                             <div className="flex justify-center items-center mt-10">
 
-                                <button className="btn bg-[#835D23]  text-white" type="submit">
+                                <button className="btn bg-blue-300 " type="submit">
                                     Add Post
                                 </button>
                             </div>
