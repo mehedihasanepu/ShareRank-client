@@ -1,8 +1,56 @@
-
+import Lottie from "lottie-react";
+import goldSub from "../../assets/icon/goldSubcribetion.json";
+import "./membership.css"
 const Membership = () => {
     return (
-        <div>
-            
+
+        <div className="hero subscribe py-12 px-24">
+            <div className=" hero-content bg-slate-300 bg-opacity-60 w-full flex justify-around px-20 py-10 shadow-2xl rounded-2xl ">
+                <div className="flex-1">
+                    <Lottie className="w-72" animationData={goldSub}></Lottie>
+                </div>
+                <div className="flex-2">
+                    <h2 className="text-3xl font-semibold text-blue-950">Unlock the Next Level with Our  <span className="text-[#ffa200] font-bold">Golden Subscription!</span></h2>
+                    <p>Welcome to ShareRank, where we are dedicated to enhancing your experience and taking it to the next level. Our Golden Subscription is designed to offer you exclusive access and premium benefits and unlimited post experience that redefine your journey with us.</p>
+
+
+
+                    <div className="flex justify-center my-5 gap-5">
+
+                        <button className="btn" onClick={() => document.getElementById('my_modal_5').showModal()}>Subscribe</button>
+                        <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
+
+
+                            <div className="modal-box">
+
+                                <div>
+                                    <h3 className="text-xl text-center font-semibold text-blue-950">
+                                        Joining our Golden Subscription is easy!
+                                    </h3>
+                                            
+
+                                    <button className="text-xl text-center font-semibold text-blue-950">
+                                        Pay $20
+                                    </button>
+                                </div>
+
+                                <div className="modal-action">
+                                    <form method="dialog">
+                                        <button className="btn  btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </dialog>
+
+
+
+                    </div>
+
+
+
+
+                </div>
+            </div>
         </div>
     );
 };

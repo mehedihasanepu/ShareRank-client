@@ -55,6 +55,11 @@ const Navbar = () => {
                                         </a>
                                     </li>
                                     <li>
+                                        <a>
+                                            <NavLink to="/dashboard/userProfile">Dashboard</NavLink>
+                                        </a>
+                                    </li>
+                                    <li>
                                         {/* {
                                             user && isAdmin && <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
                                         }
@@ -89,6 +94,11 @@ const Navbar = () => {
                             <li>
                                 <a>
                                     <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/notification">Notification</NavLink>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/dashboard/userProfile">Dashboard</NavLink>
                                 </a>
                             </li>
                             <li>

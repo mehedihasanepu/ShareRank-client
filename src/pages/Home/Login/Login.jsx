@@ -6,12 +6,12 @@ import {
 } from "react-simple-captcha";
 import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import useAuth from "../../../hook/useAuth";
 import SocialLogin from "../../../component/SocialLogin/SocialLogin";
 import "./login.css"
+import toast from "react-hot-toast";
 const Login = () => {
-    const [disabled, setDisabled] = useState(true);
+    const [disabled, setDisabled] = useState(false);
     const { singIn } = useAuth()
 
     const navigate = useNavigate()
@@ -22,6 +22,15 @@ const Login = () => {
     useEffect(() => {
         loadCaptchaEnginge(6);
     }, []);
+
+    const handleValidateCaptcha = (e) => {
+        const user_captcha_value = e.target.value;
+        if (validateCaptcha(user_captcha_value)) {
+            setDisabled(false);
+        } else {
+            setDisabled(true);
+        }
+    };
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -34,25 +43,17 @@ const Login = () => {
             .then((result) => {
                 const user = result.user;
                 console.log(user);
-                Swal.fire({
-                    icon: "success",
-                    title: "Success...",
-                    text: "User Login Successful",
-                });
+
+                toast?.success(`${user.displayName} login successfully`)
+
                 navigate(from, { replace: true });
             })
-            .catch((error) => console.error(error));
-    };
+            .catch(error => {
+                console.error(error);
+                toast.error(`${error.message}`)
 
-    const handleValidateCaptcha = (e) => {
-        const user_captcha_value = e.target.value;
-        if (validateCaptcha(user_captcha_value)) {
-            setDisabled(false);
-        } else {
-            setDisabled(true);
-        }
+            })
     };
-
 
 
     return (
