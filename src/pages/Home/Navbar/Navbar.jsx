@@ -38,7 +38,7 @@ const Navbar = () => {
                             </label>
 
                             {isDropdownOpen && (
-                                <ul tabIndex={0} className="menu dropdown-content w-56 mt-3 gap-3 z-[2] p-2 shadow relative right-1  bg-white bg-opacity-90 rounded-box flex-row-reverse">
+                                <ul tabIndex={0} className="menu dropdown-content w-48 mt-3 gap-3 z-[2] p-2 shadow relative right-1  bg-white bg-opacity-90 rounded-box flex-row-reverse">
                                     <li>
                                         <a >
                                             <NavLink to="/">Home</NavLink>
@@ -56,6 +56,15 @@ const Navbar = () => {
                                     </li>
                                     <li>
                                         <a>
+                                            <div className="indicator py-2">
+                                                <span className="indicator-item indicator-top indicator-start badge badge-info">99+</span>
+                                                <NavLink to="/notification">Notification</NavLink>
+                                            </div>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a>
                                             <NavLink to="/dashboard/userProfile">Dashboard</NavLink>
                                         </a>
                                     </li>
@@ -67,7 +76,7 @@ const Navbar = () => {
                                             user && !isAdmin && <NavLink to="/dashboard/userHome">Dashboard</NavLink>
                                         } */}
                                     </li>
-                                   
+
                                     {
                                         user ? null :
                                             <>
@@ -98,6 +107,15 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <a>
+                                    <div className="indicator mx-4">
+                                        <span className="indicator-item badge badge-info">99+</span>
+                                        <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/notification">Notification</NavLink>
+                                    </div>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a>
                                     <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/dashboard/userProfile">Dashboard</NavLink>
                                 </a>
                             </li>
@@ -109,8 +127,8 @@ const Navbar = () => {
                                         {
                                             user && !isAdmin &&   <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/dashboard/userHome">Dashboard</NavLink>
                                         } */}
-                                    
-                                  
+
+
                                 </a>
                             </li>
                         </ul>

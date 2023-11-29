@@ -96,7 +96,7 @@ const Subscription = () => {
                     Swal.fire({
                         position: "top-end",
                         icon: "success",
-                        title: `${user.name} is an Admin Now!`,
+                        title: 'Congratulation You Got Golden Subscription',
                         showConfirmButton: false,
                         timer: 1500
                     });

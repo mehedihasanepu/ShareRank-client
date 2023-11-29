@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import useAllSortPost from "../../../hook/useAllSortPost";
 import useAllPost from "../../../hook/useAllPost";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
     const [searchText, setSearchText] = useState('');
     const [upVote, setUpVote] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1); 
+    const [currentPage, setCurrentPage] = useState(1);
     const [totalPosts, setTotalPosts] = useState(0);
 
     const handleInputChange = (e) => {
@@ -24,14 +25,17 @@ const Banner = () => {
     }, [allPosts]);
 
     const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber); 
+        setCurrentPage(pageNumber);
     };
 
     console.log(posts);
 
-  
+
     const itemsPerPage = 5;
     const totalPages = Math.ceil(totalPosts / itemsPerPage);
+
+
+
 
     return (
         <div >
@@ -72,30 +76,32 @@ const Banner = () => {
                 <div className="grid grid-cols-2 gap-10 mx-20 ">
                     {
                         posts.map(post => <div key={post._id}>
-                            <div className="max-w-screen-lg mx-auto bg-base-100 p-7 rounded-lg shadow-xl">
-                                <div className="flex gap-5">
-                                    <div className="avatar online">
-                                        <div className="w-16 rounded-full">
-                                            <img src={post.authorImage} />
+                            <Link to={`/post/${post._id}`}>
+                                <div className="max-w-screen-lg mx-auto bg-base-100 p-7 rounded-lg shadow-xl">
+                                    <div className="flex gap-5">
+                                        <div className="avatar online">
+                                            <div className="w-16 rounded-full">
+                                                <img src={post.authorImage} />
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <h2 className="text-lg font-bold text-start">{post.authorName}</h2>
+                                            <p>{post.postTime.slice(11, 19)} / {post.postTime.slice(0, 10)}</p>
                                         </div>
                                     </div>
-                                    <div>
-                                        <h2 className="text-lg font-bold text-start">{post.authorName}</h2>
-                                        <p>{post.postTime.slice(11, 19)} / {post.postTime.slice(0, 10)}</p>
+                                    <div className="pt-5">
+                                        <h3 className="text-[17px] font-semibold">{post.title}</h3>
+                                        <p className="text-sm">#{post.tag}</p>
+                                    </div>
+                                    <div className="pt-5 flex justify-between">
+                                        <div className="flex gap-4">
+                                            <p className="">{post.upVote} Up vote</p>
+                                            <p className="">{post.downVote} Down vote</p>
+                                        </div>
+                                        <p className="">{post?.comment ? post.comment : 0} Comment</p>
                                     </div>
                                 </div>
-                                <div className="pt-5">
-                                    <h3 className="text-[17px] font-semibold">{post.title}</h3>
-                                    <p className="text-sm">#{post.tag}</p>
-                                </div>
-                                <div className="pt-5 flex justify-between">
-                                    <div className="flex gap-4">
-                                        <p className="">{post.upVote} Up vote</p>
-                                        <p className="">{post.downVote} Down vote</p>
-                                    </div>
-                                    <p className="">{post?.comment ? post.comment : 0} Comment</p>
-                                </div>
-                            </div>
+                            </Link>
                         </div>)
                     }
                 </div>

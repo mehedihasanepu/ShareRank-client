@@ -12,6 +12,7 @@ import UserProfileDashboard from "../pages/Dashboard/UserProfileDashboard/UserPr
 import AddPost from "../pages/Dashboard/AddPost/AddPost";
 import AdminRoute from "./AdminRoute";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
+import PostDetails from "../component/PostDetails/PostDetails";
 // import AdminRoute from "./AdminRoute";
 
 
@@ -26,16 +27,20 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'membership',
-                element:<Membership></Membership>
+                element: <Membership></Membership>
             },
-           
+            {
+                path: 'post/:id',
+                element: <PostDetails></PostDetails>
+            },
+
             {
                 path: 'login',
                 element: <Login></Login>
             },
             {
                 path: 'signUp',
-                element:<SignUp></SignUp>
+                element: <SignUp></SignUp>
             }
         ]
     },
@@ -50,7 +55,7 @@ export const router = createBrowserRouter([
             // normal User Routes 
             {
                 path: 'userProfile',
-                element:<UserProfileDashboard></UserProfileDashboard>
+                element: <UserProfileDashboard></UserProfileDashboard>
             },
             {
                 path: 'addPost',

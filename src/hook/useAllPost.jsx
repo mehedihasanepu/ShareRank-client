@@ -11,7 +11,7 @@ const useAllPost = () => {
             return res.data;
         }
     });
-    return { posts, isLoading, refetch, };
+    return { posts, isLoading, refetch};
 };
 
 export default useAllPost;
