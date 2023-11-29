@@ -10,8 +10,8 @@ const MakeAnnouncement = () => {
     const { currentUser } = useCurrentUser()
     const onSubmit = async (data) => {
         const announcementItem = {
-            Name: currentUser[0].name,
-            Email: currentUser[0].email,
+            AuthorName: currentUser[0].name,
+            AuthorImage: currentUser[0].image,
             title: data.title,
             descriptions: data.descriptions,
             postTime: new Date()

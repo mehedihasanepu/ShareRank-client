@@ -29,7 +29,8 @@
     "react-simple-captcha": "^9.3.0",
     "recharts": "^2.10.2",
     "sort-by": "^1.2.0",
-    "sweetalert2": "^11.10.1"
+    "sweetalert2": "^11.10.1",
+    "swiper": "^11.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.2.37",

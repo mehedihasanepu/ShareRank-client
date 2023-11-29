@@ -2,12 +2,28 @@ import { useState, useEffect } from "react";
 import useAllSortPost from "../../../hook/useAllSortPost";
 import useAllPost from "../../../hook/useAllPost";
 import { Link } from "react-router-dom";
+import Loading from "../../../component/Loading/Loading";
 
 const Banner = () => {
     const [searchText, setSearchText] = useState('');
     const [upVote, setUpVote] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPosts, setTotalPosts] = useState(0);
+    const { posts} = useAllPost();
+    const { sortedPost, isLoading } = useAllSortPost(upVote, searchText, currentPage);
+
+
+    useEffect(() => {
+        setTotalPosts(posts.length);
+    }, [posts]);
+
+    if (isLoading) {
+        return <Loading></Loading>
+    }
+
+    const itemsPerPage = 5;
+    const totalPages = Math.ceil(totalPosts / itemsPerPage);
+
 
     const handleInputChange = (e) => {
         setSearchText(e.target.value);
@@ -18,21 +34,12 @@ const Banner = () => {
         console.log('Search Text:', searchText);
     };
 
-    const { posts } = useAllSortPost(upVote, searchText, currentPage);
-    const { posts: allPosts = [] } = useAllPost()
-    useEffect(() => {
-        setTotalPosts(allPosts.length);
-    }, [allPosts]);
 
     const handlePageChange = (pageNumber) => {
         setCurrentPage(pageNumber);
     };
 
-    console.log(posts);
 
-
-    const itemsPerPage = 5;
-    const totalPages = Math.ceil(totalPosts / itemsPerPage);
 
 
 
@@ -75,7 +82,7 @@ const Banner = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-10 mx-20 ">
                     {
-                        posts.map(post => <div key={post._id}>
+                        sortedPost.map(post => <div key={post._id}>
                             <Link to={`/post/${post._id}`}>
                                 <div className="max-w-screen-lg mx-auto bg-base-100 p-7 rounded-lg shadow-xl">
                                     <div className="flex gap-5">

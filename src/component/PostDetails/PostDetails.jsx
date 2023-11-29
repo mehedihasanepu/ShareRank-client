@@ -11,17 +11,21 @@ const PostDetails = () => {
     const axiosSecure = useAxiosSecure()
     const axiosPublic = useAxiosPublic()
     const [commentText, setCommentText] = useState('');
-
-    const { posts, isLoading, refetch: allPostRefetch } = useAllPost();
     const { comments, refetch } = useComments()
-
+    const { posts, isLoading, refetch: allPostRefetch } = useAllPost();
     const { id } = useParams()
+    
     if (isLoading) {
         return <Loading></Loading>
     }
+    console.log(posts);
+
+
     const postDetails = posts.find(post => post._id === id)
     console.log(postDetails);
     const { _id, authorEmail, authorImage, authorName, descriptions, downVote, postTime, tag, title, upVote } = postDetails
+
+
 
 
     if (isLoading) {

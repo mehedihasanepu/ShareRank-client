@@ -3,12 +3,14 @@ import { Link, NavLink } from "react-router-dom";
 import "./navbar.css"
 import UserProfile from "../../../component/UserProfile/UserProfile";
 import useAuth from "../../../hook/useAuth";
+import useAnnouncement from "../../../hook/useAnnouncement";
+import { IoNotifications } from "react-icons/io5";
 
 const Navbar = () => {
 
     const { user } = useAuth()
     const [isDropdownOpen, setDropdownOpen] = useState(false);
-
+    const { announcements } = useAnnouncement()
 
     const handleDropdownToggle = () => {
         setDropdownOpen(!isDropdownOpen);
@@ -19,13 +21,15 @@ const Navbar = () => {
 
 
     return (
-        <div>
+        <div >
             <div className="max-w-screen-xl mx-auto mb-1 py-2 ">
-                <div className={`flex flex-row items-center md:px-5 justify-between `}>
+                <div className="flex flex-row items-center md:px-5 justify-between">
                     {/* <div>
                         <img className="w-[150px] h-[70px]" src={logo} alt="" />
                     </div> */}
-                    <h3 className="text-2xl">ShareRank</h3>
+                    <Link to='/'>
+                        <h3 className="text-2xl">ShareRank</h3>
+                    </Link>
                     <div className="lg:hidden flex">
                         <UserProfile></UserProfile>
                         <div className=" dropdown flex-row-reverse">
@@ -55,10 +59,10 @@ const Navbar = () => {
                                         </a>
                                     </li>
                                     <li>
-                                        <a>
+                                        <a href="#announcement">
                                             <div className="indicator py-2">
-                                                <span className="indicator-item indicator-top indicator-start badge badge-info">99+</span>
-                                                <NavLink to="/notification">Notification</NavLink>
+                                                <span className="indicator-item indicator-top indicator-start badge badge-info">{announcements.length}</span>
+                                                <p><IoNotifications className="text-xl"></IoNotifications></p>
                                             </div>
                                         </a>
                                     </li>
@@ -106,10 +110,11 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li>
-                                <a>
+                                <a href="#announcement">
                                     <div className="indicator mx-4">
-                                        <span className="indicator-item badge badge-info">99+</span>
-                                        <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/notification">Notification</NavLink>
+                                        <span className="indicator-item badge badge-info">{announcements.length}</span>
+                                        <p className="text-center px-2 py-[5px] bg-gray-100 rounded-md"><IoNotifications className="text-xl"></IoNotifications></p>
+                                      
                                     </div>
                                 </a>
                             </li>
