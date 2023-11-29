@@ -15,6 +15,9 @@ import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 import PostDetails from "../component/PostDetails/PostDetails";
 import MyPost from "../pages/Dashboard/MyPost/MyPost";
 import CommentDetails from "../component/CommentDetails/CommentDetails";
+import ManageUser from "../pages/Dashboard/ManageUser/ManageUser";
+import MakeAnnouncement from "../pages/Dashboard/MakeAnnouncement/MakeAnnouncement";
+import ReportedActivities from "../pages/Dashboard/ReportedActivities/ReportedActivities";
 // import AdminRoute from "./AdminRoute";
 
 
@@ -79,23 +82,20 @@ export const router = createBrowserRouter([
                 path: 'adminProfile',
                 element: <AdminRoute><AdminProfile></AdminProfile></AdminRoute>
             },
-            // {
-            //     path: 'addItems',
-            //     element: <AdminRoute><AddItems></AddItems></AdminRoute>
-            // },
-            // {
-            //     path: 'manageItems',
-            //     element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
-            // },
-            // {
-            //     path: 'updateItem/:id',
-            //     element: <AdminRoute><UpdateItem></UpdateItem></AdminRoute>,
-            //     loader: ({ params }) => fetch(`https://bistro-boss-restaurant-server-flame.vercel.app/menu/${params.id}`)
-            // },
-            // {
-            //     path: 'users',
-            //     element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
-            // }
+            {
+                path: 'manageUser',
+                element: <AdminRoute><ManageUser></ManageUser></AdminRoute>
+            },
+            {
+                path: 'makeAnnouncement',
+                element: <AdminRoute><MakeAnnouncement></MakeAnnouncement> </AdminRoute>
+            },
+            {
+                path: 'activities',
+                element: <AdminRoute><ReportedActivities></ReportedActivities> </AdminRoute>
+            },
+
+            
         ]
     }
 ]);

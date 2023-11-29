@@ -17,13 +17,13 @@ const CommentDetails = () => {
     const postAllComments = comments.filter(comment => comment.postId === id);
 
 
-    const handleFeedback = (e, commentId, postTitle, commenterName,comment) => {
+    const handleFeedback = (e, commentId, postTitle, commenterName, comment) => {
         const updatedFeedbacks = {
             [commentId]: { commentId: commentId, feedback: e.target.value }
         };
         setFeedbacks(updatedFeedbacks);
         const feedback = {
-            commentId: commentId, PosterFeedback: e.target.value, postTitle: postTitle, commenterName: commenterName,comment:comment
+            commentId: commentId, PosterFeedback: e.target.value, postTitle: postTitle, commenterName: commenterName, comment: comment
         };
         setCommentFeedback(feedback);
     };

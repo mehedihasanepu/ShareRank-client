@@ -65,7 +65,7 @@ const Navbar = () => {
 
                                     <li>
                                         <a>
-                                            <NavLink to="/dashboard/userProfile">Dashboard</NavLink>
+                                            <NavLink to="/dashboard">Dashboard</NavLink>
                                         </a>
                                     </li>
                                     <li>
@@ -116,7 +116,7 @@ const Navbar = () => {
 
                             <li>
                                 <a>
-                                    <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/dashboard/userProfile">Dashboard</NavLink>
+                                    <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/dashboard">Dashboard</NavLink>
                                 </a>
                             </li>
                             <li>

@@ -66,7 +66,7 @@ const MyPost = () => {
 
                                         <button
                                             className="btn btn-sm bg-blue-200">
-                                            Comment
+                                            Comments
                                             <FaComment className="text-[17px]"></FaComment>
                                         </button>
                                     </Link>
