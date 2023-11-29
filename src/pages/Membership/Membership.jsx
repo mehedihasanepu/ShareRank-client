@@ -50,14 +50,7 @@ const Membership = () => {
                                 </div>
                             </div>
                         </dialog>
-
-
-
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>

@@ -90,7 +90,8 @@ const PostDetails = () => {
         postTitle: title,
         commenterEmail: authorEmail,
         commenterName: authorName,
-        comment: commentText
+        comment: commentText,
+        postId: _id
 
 
     }

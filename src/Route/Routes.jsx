@@ -13,6 +13,8 @@ import AddPost from "../pages/Dashboard/AddPost/AddPost";
 import AdminRoute from "./AdminRoute";
 import AdminProfile from "../pages/Dashboard/AdminProfile/AdminProfile";
 import PostDetails from "../component/PostDetails/PostDetails";
+import MyPost from "../pages/Dashboard/MyPost/MyPost";
+import CommentDetails from "../component/CommentDetails/CommentDetails";
 // import AdminRoute from "./AdminRoute";
 
 
@@ -61,14 +63,14 @@ export const router = createBrowserRouter([
                 path: 'addPost',
                 element: <AddPost></AddPost>
             },
-            // {
-            //     path: 'payment',
-            //     element: <Payment></Payment>
-            // },
-            // {
-            //     path: 'paymentHistory',
-            //     element: <PaymentHistory></PaymentHistory>
-            // },
+            {
+                path: 'myPost',
+                element: <MyPost></MyPost>
+            },
+            {
+                path: 'myPost/comments/:id',
+                element: <CommentDetails></CommentDetails>
+            },
 
 
 
