@@ -1,14 +1,17 @@
+import { useForm } from "react-hook-form";
 import Loading from "../../../component/Loading/Loading";
 import useAllPost from "../../../hook/useAllPost";
 import useAllUser from "../../../hook/useAllUser";
+import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useComments from "../../../hook/useComments";
 import useCurrentUser from "../../../hook/useCurrentUser";
-import { Cell,  Legend, Pie, PieChart,} from 'recharts';
+import { Cell, Legend, Pie, PieChart, } from 'recharts';
+import Swal from "sweetalert2";
 
 
 const AdminProfile = () => {
-
-
+    const { register, handleSubmit, reset } = useForm();
+    const axiosSecure = useAxiosSecure()
     const { currentUser, isLoading } = useCurrentUser();
     const { posts } = useAllPost()
     const { comments } = useComments()
@@ -55,6 +58,40 @@ const AdminProfile = () => {
             </text>
         );
     };
+
+
+
+    const onSubmit = async (data) => {
+        const tagItem = {
+            name: data.title,
+
+        }
+        console.log(tagItem);
+
+        const tagRes = await axiosSecure.post('/tag', tagItem);
+        console.log(tagRes.data);
+
+        if (tagRes.data.insertedId) {
+            reset();
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: `The tag is added .`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+        }
+
+    }
+
+
+
+
+
+
+
+
     return (
         <div>
             <div className="flex justify-center ">
@@ -79,7 +116,7 @@ const AdminProfile = () => {
             </div>
             <hr className="mt-3" />
 
-          <div className="flex justify-center ">
+            <div className="flex justify-center ">
                 <div>
                     <PieChart width={400} height={400}>
                         <Pie
@@ -99,7 +136,32 @@ const AdminProfile = () => {
                         <Legend></Legend>
                     </PieChart>
                 </div>
-          </div>
+            </div>
+
+            <hr className="mt-10" />
+            <h3 className="text-center text-3xl font-semibold text-blue-900">Add New Tag</h3>
+            <div>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-control w-full ">
+                        <label className="label">
+                            <span className="label-text"> Tag Name*</span>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder=" Tag Name"
+                            {...register('title', { required: true })}
+                            required
+                            className="input input-bordered w-full" />
+                    </div>
+
+                    <div className="flex justify-center items-center mt-10">
+
+                        <button className="btn bg-blue-300 " type="submit">
+                            Add Tag
+                        </button>
+                    </div>
+                </form>
+            </div>
 
         </div>
     )

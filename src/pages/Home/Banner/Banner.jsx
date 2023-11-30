@@ -109,7 +109,8 @@ const Banner = () => {
                                     </div>
                                 </div>
                             </Link>
-                        </div>)
+                        </div>
+                        )
                     }
                 </div>
                 <div className="flex justify-center mt-5">

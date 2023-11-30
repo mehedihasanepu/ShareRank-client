@@ -7,6 +7,7 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import useCurrentUser from "../../../hook/useCurrentUser";
 import useUserAllPost from "../../../hook/useUserAllPost";
 import { Link } from "react-router-dom";
+import useTags from "../../../hook/useTags";
 
 
 const AddPost = () => {
@@ -14,34 +15,17 @@ const AddPost = () => {
     const [tag, setTag] = useState('')
     const axiosSecure = useAxiosSecure()
     const { user } = useAuth()
-
     const { currentUser } = useCurrentUser();
     const { userPosts } = useUserAllPost()
-    console.log(currentUser[0]?.badge)
-    console.log(userPosts.length);
+    const { tags } = useTags();
 
+    console.log(tags);
 
+    const options = tags.map(tag => ({ label: tag.name }));
 
-    const options = [
-        { label: 'Sci-fi' },
-        { label: 'Drama' },
-        { label: 'Action' },
-        { label: 'Fantasy' },
-        { label: 'Thriller' },
-        { label: 'Comedy' },
-        { label: 'Mystery' },
-        { label: 'Horror' },
-        { label: 'Romance' },
-        { label: 'Adventure' },
-        { label: 'Crime' },
-        { label: 'Historical' },
-        { label: 'Animation' }
-    ]
     const handleSelect = (value) => {
-        setTag(value.label)
-    }
-
-
+        setTag(value.label);
+    } 
 
     const onSubmit = async (data) => {
         console.log(data);
