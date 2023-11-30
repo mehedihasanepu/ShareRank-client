@@ -6,6 +6,9 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import useComments from "../../hook/useComments";
 import useAxiosPublic from "../../hook/useAxiosPublic";
+import Lottie from "lottie-react";
+import shareIcon from "../../assets/icon/Share.json"
+import { FacebookIcon, FacebookShareButton, FacebookShareCount, LinkedinIcon, LinkedinShareButton, TelegramIcon, TelegramShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton, XIcon } from "react-share";
 
 const PostDetails = () => {
     const axiosSecure = useAxiosSecure()
@@ -14,7 +17,7 @@ const PostDetails = () => {
     const { comments, refetch } = useComments()
     const { posts, isLoading, refetch: allPostRefetch } = useAllPost();
     const { id } = useParams()
-    
+
     if (isLoading) {
         return <Loading></Loading>
     }
@@ -33,6 +36,9 @@ const PostDetails = () => {
     }
     const commentDetails = comments.filter(comment => comment.postTitle === title)
     console.log(commentDetails.length);
+
+
+
 
 
 
@@ -119,9 +125,18 @@ const PostDetails = () => {
     };
 
 
+    const shareUrl = window.location.href;
+
+
 
     return (
         <div className="max-w-screen-lg mx-auto py-10 px-5 md:px-0">
+
+
+
+
+
+
             <div className="card  bg-base-100 shadow-xl" data-aos="fade-up"
                 data-aos-anchor-placement="top-bottom">
 
@@ -164,7 +179,72 @@ const PostDetails = () => {
                                 </div>
                             </div>
                             <p className="">{commentDetails.length ? commentDetails.length : 0} Comment</p>
-                            <button className="btn">Share</button>
+
+                            <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>  <div className="flex justify-center items-center">
+                                <Lottie className="w-8" animationData={shareIcon}></Lottie>
+                                Share
+                            </div>
+                            </button>
+                            <dialog id="my_modal_3" className="modal">
+                                <div className="modal-box p-10">
+                                    <form method="dialog">
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+
+                                   <div className="flex gap-3">
+                                        <FacebookShareButton url={shareUrl} className="Demo__some-network__share-button">
+                                            <FacebookIcon size={32} round />
+                                        </FacebookShareButton>
+
+                                        <div>
+                                            <FacebookShareCount url={shareUrl} title={title} className="Demo__some-network__share-count">
+                                                {count => count}
+                                            </FacebookShareCount>
+                                        </div>
+
+                                        <div className="Demo__some-network">
+                                            <TwitterShareButton
+                                                url={shareUrl}
+                                                title={title}
+                                                className="Demo__some-network__share-button"
+                                            >
+                                                <XIcon size={32} round />
+                                            </TwitterShareButton>
+                                        </div>
+
+                                        <div className="Demo__some-network">
+                                            <TelegramShareButton
+                                                url={shareUrl}
+                                                title={title}
+                                                className="Demo__some-network__share-button"
+                                            >
+                                                <TelegramIcon size={32} round />
+                                            </TelegramShareButton>
+                                        </div>
+
+                                        <div className="Demo__some-network">
+                                            <WhatsappShareButton
+                                                url={shareUrl}
+                                                title={title}
+                                                separator=":: "
+                                                className="Demo__some-network__share-button"
+                                            >
+                                                <WhatsappIcon size={32} round />
+                                            </WhatsappShareButton>
+                                        </div>
+
+                                        <div className="Demo__some-network">
+                                            <LinkedinShareButton url={shareUrl} className="Demo__some-network__share-button">
+                                                <LinkedinIcon size={32} round />
+                                            </LinkedinShareButton>
+                                        </div>
+                                   </div>
+
+
+                                </div>
+                            </dialog>
+
                         </div>
 
 
@@ -179,6 +259,7 @@ const PostDetails = () => {
                                     onChange={handleCommentText}
                                 />
                                 <div className="flex justify-center">
+
                                     <button
                                         type="submit"
                                         className="btn px-4 py-2 text-sm font-medium  bg-blue-300"
