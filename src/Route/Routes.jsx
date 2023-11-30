@@ -32,7 +32,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'membership',
-                element: <Membership></Membership>
+                element: <PrivateRoute><Membership></Membership></PrivateRoute>
             },
             {
                 path: 'post/:id',

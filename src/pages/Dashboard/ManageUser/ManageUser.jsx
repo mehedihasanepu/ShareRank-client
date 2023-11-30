@@ -85,9 +85,11 @@ const ManageUser = () => {
                                     {user.role === 'admin' ? 'Admin' : <button
                                         onClick={() => handleMakeAdmin(user)}
                                         className="btn btn-sm bg-blue-200">
-                                        Make Admin
-                                        <FaUsers className=" 
+                                        <div className="flex items-center gap-2">
+                                            Make Admin
+                                            <FaUsers className=" 
                                         text-lg"></FaUsers>
+                                        </div>
                                     </button>}
                                 </td>
                                 <td>

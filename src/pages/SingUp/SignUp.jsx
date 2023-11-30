@@ -6,6 +6,8 @@ import useAxiosPublic from "../../hook/useAxiosPublic";
 import useAuth from "../../hook/useAuth";
 import SocialLogin from "../../component/SocialLogin/SocialLogin";
 import "./signUp.css"
+import singUp from "../../assets/icon/singup.json"
+import Lottie from "lottie-react";
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -81,13 +83,13 @@ const SignUp = () => {
       <Helmet>
         <title>ShareRank| Sign Up</title>
       </Helmet>
-      <div className="hero sign-up py-12 px-24">
-        <div className=" hero-content bg-slate-50 bg-opacity-30 w-full flex p-10 shadow-2xl rounded-2xl ">
+      <div className="hero sign-up py-12 px-7 md:px-16 lg:px-24">
+        <div className="hero-content bg-slate-50 bg-opacity-30 w-full flex flex-col lg:flex-row  p-10 shadow-2xl rounded-2xl">
           <div className="text-center md:w-1/2 lg:text-left">
-            {/* <img src={loginImg} alt="" /> */}
+            <Lottie animationData={singUp}></Lottie>
           </div>
 
-          <div className=" md:w-1/2  max-w-sm ">
+          <div className=" w-full lg:w-1/2  ">
             <h2 className="text-center text-4xl mb-4 text-blue-900 font-bold">Sign Up</h2>
             <div className="card  bg-opacity-50 bg-base-100">
               <form onSubmit={handleSubmit(onSubmit)} className="pt-5 px-5">

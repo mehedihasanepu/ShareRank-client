@@ -103,8 +103,10 @@ const ReportedActivities = () => {
                                     <button
                                         onClick={() => handleDeletePost(feedback._id, feedback.commentId)}
                                         className="btn btn-sm bg-blue-200">
-                                        Delete
-                                        <FaTrashAlt className="text-[17px]"></FaTrashAlt>
+                                       <div className="flex items-center gap-2">
+                                            Delete
+                                            <FaTrashAlt className="text-[17px]"></FaTrashAlt>
+                                       </div>
                                     </button>
                                 </td>
                             </tr>)

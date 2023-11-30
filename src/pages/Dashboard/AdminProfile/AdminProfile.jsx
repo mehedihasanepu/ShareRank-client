@@ -109,7 +109,7 @@ const AdminProfile = () => {
                 </div>
             </div>
             <hr />
-            <div className="flex justify-between mt-8">
+            <div className="flex flex-wrap justify-between mt-8">
                 <h3 className="text-2xl font-semibold">Total Post: {posts.length}</h3>
                 <h3 className="text-2xl font-semibold">Total comment: {comments.length}</h3>
                 <h3 className="text-2xl font-semibold">Total user: {users.length}</h3>

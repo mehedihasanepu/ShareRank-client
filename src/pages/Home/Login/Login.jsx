@@ -16,7 +16,7 @@ import Lottie from "lottie-react";
 
 
 const Login = () => {
-    const [disabled, setDisabled] = useState(false);
+    const [disabled, setDisabled] = useState(true);
     const { singIn } = useAuth()
 
     const navigate = useNavigate()
@@ -67,13 +67,13 @@ const Login = () => {
             <Helmet>
                 <title>ShareRank | Login</title>
             </Helmet>
-            <div className="hero login py-12 px-24">
-                <div className="hero-content bg-slate-50 bg-opacity-30 w-full flex md:flex-row-reverse p-10 shadow-2xl rounded-2xl ">
+            <div className="hero login py-12 px-7 md:px-16 lg:px-24">
+                <div className="hero-content bg-slate-50 bg-opacity-30 w-full flex flex-col lg:flex-row-reverse  p-10 shadow-2xl rounded-2xl ">
                     <div className="text-center md:w-1/2 lg:text-left">
                        <Lottie animationData={loginImg}></Lottie>
                     </div>
 
-                    <div className=" md:w-1/2 max-w-sm ">
+                    <div className=" w-full lg:w-1/2  ">
                         <h2 className="text-center text-4xl mb-4 font-bold">Login</h2>
                         <div className="card bg-opacity-50 bg-base-100">
                             <form onSubmit={handleLogin} className="pt-5 px-5">

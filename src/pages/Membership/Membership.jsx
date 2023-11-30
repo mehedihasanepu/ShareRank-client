@@ -4,6 +4,7 @@ import "./membership.css"
 import Subscription from "../../component/Subscription/Subscription";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
+import { Helmet } from "react-helmet";
 
 const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK)
 
@@ -11,6 +12,9 @@ const Membership = () => {
     return (
 
         <div className="hero subscribe py-12 px-5 md:px-24">
+            <Helmet>
+                <title>ShareRank | MemberShip</title>
+            </Helmet>
             <div className=" hero-content bg-slate-300 bg-opacity-60 w-full flex justify-around flex-col lg:flex-row px-8 md:px-20 py-10 shadow-2xl rounded-2xl ">
                 <div className="flex-1">
                     <Lottie className="w-48 md:w-60 lg:w-72" animationData={goldSub}></Lottie>
