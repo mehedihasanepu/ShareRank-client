@@ -5,85 +5,86 @@ import useAxiosSecure from "../../../hook/useAxiosSecure";
 import { Link } from "react-router-dom";
 
 const MyPost = () => {
+    const { userPosts, refetch } = useUserAllPost();
+    const axiosSecure = useAxiosSecure();
 
-    const { userPosts, refetch } = useUserAllPost()
-    const axiosSecure = useAxiosSecure()
-
-    const handleDeletePost = id => {
+    const handleDeletePost = (id) => {
         Swal.fire({
-            title: "Are you sure delete this post?",
+            title: "Are you sure to delete this post?",
             text: "You won't be able to revert this!",
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`/post/${id}`)
-                    .then(res => {
-                        if (res.data.deletedCount > 0) {
-                            refetch();
-                            Swal.fire({
-                                title: "Deleted!",
-                                text: "Your post has been deleted.",
-                                icon: "success"
-                            });
-                        }
-                    })
+                axiosSecure.delete(`/post/${id}`).then((res) => {
+                    if (res.data.deletedCount > 0) {
+                        refetch();
+                        Swal.fire({
+                            title: "Deleted!",
+                            text: "Your post has been deleted.",
+                            icon: "success",
+                        });
+                    }
+                });
             }
         });
-    }
-
+    };
 
     return (
-        <div>
-            <div className="text-center my-4">
-                <h2 className="text-3xl">Total Post: {userPosts.length}</h2>
+        <div className="overflow-x-auto">
+            <div className="mx-auto text-center md:w-4/12 mb-3">
+                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">
+                    Total Post: {userPosts.length}
+                </h3>
             </div>
-            <div className="overflow-x-auto">
-                <table className="table table-zebra w-full">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Title</th>
-                            <th>Up Vote</th>
-                            <th>Down Vote</th>
-                            <th>Comments</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            userPosts.map((post, index) => <tr key={post._id}>
-                                <th>{index + 1}</th>
-                                <td>{post.title}</td>
-                                <td>{post.upVote}</td>
-                                <td>{post.downVote}</td>
-                                <td>
-                                    <Link to={`comments/${post._id}`}>
 
-                                        <button
-                                            className="btn btn-sm bg-blue-200">
+            <table className="table table-zebra table-responsive-md table-responsive-sm w-full">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Title</th>
+                        <th>Up Vote</th>
+                        <th>Down Vote</th>
+                        <th>Comments</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {userPosts.map((post, index) => (
+                        <tr key={post._id}>
+                            <th>{index + 1}</th>
+                            <td>{post.title}</td>
+                            <td>{post.upVote}</td>
+                            <td>{post.downVote}</td>
+                            <td>
+                                <Link to={`comments/${post._id}`}>
+                                    <button className="btn btn-sm bg-blue-200">
+                                       <div className="flex justify-center items-center gap-1">
                                             Comments
-                                            <FaComment className="text-[17px]"></FaComment>
-                                        </button>
-                                    </Link>
-                                </td>
-                                <td>
-                                    <button
-                                        onClick={() => handleDeletePost(post._id)}
-                                        className="btn btn-sm bg-blue-200">
-                                        Delete
-                                        <FaTrashAlt className="text-[17px]"></FaTrashAlt>
+                                            <FaComment className="text-[17px]" />
+                                       </div>
                                     </button>
-                                </td>
-                            </tr>)
-                        }
-                    </tbody>
-                </table>
-            </div>
+                                </Link>
+                            </td>
+                            <td>
+                                <button
+                                    onClick={() => handleDeletePost(post._id)}
+                                    className="btn btn-sm bg-blue-200"
+                                >
+                                    <div className="flex justify-center items-center gap-1">
+
+                                    Delete
+                                    <FaTrashAlt className="text-[17px]" />
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     );
 };

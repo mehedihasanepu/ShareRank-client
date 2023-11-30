@@ -3,6 +3,7 @@ import useAllSortPost from "../../../hook/useAllSortPost";
 import useAllPost from "../../../hook/useAllPost";
 import { Link } from "react-router-dom";
 import Loading from "../../../component/Loading/Loading";
+import "./banner.css"
 
 const Banner = () => {
     const [searchText, setSearchText] = useState('');
@@ -46,18 +47,18 @@ const Banner = () => {
 
     return (
         <div >
-            <div className="max-w-screen-xl mx-auto ">
-                <div className="min-h-[400px] bg-blue-100 p-10 rounded-2xl text-center">
-                    <div className="space-y-3 py-5">
-                        <h3 className="text-2xl lg:text-4xl font-bold">Welcome to ShareRank</h3>
+            <div className="max-w-screen-xl mx-auto bannerBg">
+                <div className="min-h-[400px] p-10 rounded-2xl text-center">
+                    <div className="space-y-3  mt-8">
+                        <h3 className="text-3xl lg:text-5xl text-gray-700 py-3 font-bold">Welcome to ShareRank</h3>
                         <p className="md:text-base lg:text-xl text-gray-600">Where Every Voice Matters! <br /> Share, Discuss, and Vote on Engaging Posts from a Diverse Community.</p>
-                        <p className="text-base  text-gray-600">Join the Conversation and Shape the Narrative!</p>
-                        <div>
+                        <p className="text-base  text-gray-600 ">Join the Conversation and Shape the Narrative!</p>
+                        <div className="pt-5">
                             <div className="join border border-stone-300">
                                 <div>
                                     <div>
                                         <input
-                                            className="input input-bordered join-item"
+                                            className="input input-bordered  md:pr-32 join-item"
                                             placeholder="Search keyword"
                                             value={searchText}
                                             onChange={handleInputChange}
@@ -75,19 +76,21 @@ const Banner = () => {
                 </div>
             </div>
 
-            <div className="mt-20">
-                <h1 className="text-4xl font-semibold text-center my-5 text-blue-950">All Post</h1>
-                <div className="flex justify-end">
-                    <button onClick={() => setUpVote(!upVote)} className="btn"> Sort by Popularity</button>
+            <div className="mt-10">
+                <div className="mx-auto text-center md:w-4/12 ">
+                    <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">All Post</h3>
                 </div>
-                <div className="grid grid-cols-2 gap-10 mx-20 ">
+                <div className="flex justify-end my-3">
+                    <button onClick={() => setUpVote(!upVote)} className="btn btn-sm md:btn-md"> Sort by Popularity</button>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mx-5 md:mx-10 lg:mx-20 ">
                     {
                         sortedPost.map(post => <div key={post._id}>
                             <Link to={`/post/${post._id}`}>
                                 <div className="max-w-screen-lg mx-auto bg-base-100 p-7 rounded-lg shadow-xl">
-                                    <div className="flex gap-5">
+                                    <div className="flex items-center gap-5">
                                         <div className="avatar online">
-                                            <div className="w-16 rounded-full">
+                                            <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full">
                                                 <img src={post.authorImage} />
                                             </div>
                                         </div>
@@ -100,12 +103,12 @@ const Banner = () => {
                                         <h3 className="text-[17px] font-semibold">{post.title}</h3>
                                         <p className="text-sm">#{post.tag}</p>
                                     </div>
-                                    <div className="pt-5 flex justify-between">
-                                        <div className="flex gap-4">
-                                            <p className="">{post.upVote} Up vote</p>
-                                            <p className="">{post.downVote} Down vote</p>
+                                    <div className="pt-5 flex flex-wrap justify-between">
+                                        <div className="flex flex-wrap gap-4">
+                                            <p >{post.upVote} Up vote</p>
+                                            <p >{post.downVote} Down vote</p>
                                         </div>
-                                        <p className="">{post?.comment ? post.comment : 0} Comment</p>
+                                        <p >{post?.comment ? post.comment : 0} Comment</p>
                                     </div>
                                 </div>
                             </Link>

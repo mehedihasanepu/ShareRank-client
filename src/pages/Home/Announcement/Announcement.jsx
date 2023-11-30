@@ -35,7 +35,9 @@ const Announcement = () => {
 
                     <div>
 
-                        <h2 className="text-3xl md:text-4xl text-center font-semibold pt-16">Announcements</h2>
+                        <div className="mx-auto text-center md:w-4/12 mt-20">
+                            <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Announcements</h3>
+                        </div>
                         <div className='h-[50vh] md:h-[34vh] lg:h-[45vh]'>
                             <Swiper
                                 spaceBetween={30}

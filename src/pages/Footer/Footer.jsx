@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import  logo  from "../../assets/image/Logo.png"
 
 const Footer = () => {
     return (
@@ -8,14 +9,14 @@ const Footer = () => {
                     <div className="lg:w-1/3">
                         <a rel="noopener noreferrer" href="#" className="flex flex-col justify-center space-x-3 lg:justify-start">
                             <div className="flex items-center justify-center ">
-                                {/* <img className="w-56 h-28" src={logo} alt="" /> */}
-                                <h3 className="text-3xl">ShareRank</h3>
+                                <img className="w-56 h-24" src={logo} alt="" />
+
                             </div>
                         </a>
                     </div>
                     <div className="grid grid-cols-2 text-sm gap-x-3 gap-y-8 lg:w-2/3 sm:grid-cols-4">
                         <div className="space-y-3">
-                            <h3 className="tracki uppercase dark:text-gray-50">Go to</h3>
+                            <h3 className=" uppercase dark:text-gray-50">Go to</h3>
                             <ul className="space-y-1">
                                 <li>
                                     <NavLink to="/">Home</NavLink>

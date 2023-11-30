@@ -4,6 +4,10 @@
     padding: 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
+    overflow-x: auto;
+    /* Enable horizontal scrolling for small screens */
+    -webkit-overflow-scrolling: touch;
+    /* Enable smooth scrolling for WebKit browsers */
 }
 
 .custom-tab-list>.react-tabs__tab {
@@ -11,15 +15,19 @@
     cursor: pointer;
     padding: 8px 10px;
     border: 1px solid transparent;
+    white-space: nowrap;
+    /* Prevent tabs from wrapping */
 }
 
-.custom-tab-list>.react-tabs__tab:hover {
-    background-color: #f0f0f0;
-    border-color: #ccc;
-}
+@media (max-width: 768px) {
+    .custom-tab-list {
+        flex-wrap: nowrap;
+        /* Prevent wrapping of tabs */
+    }
 
-.custom-tab-list>.react-tabs__tab--selected {
-    color: #BB8506;
-    font-weight: bold;
-    border-bottom: 2px solid #BB8506;
+    .custom-tab-list>.react-tabs__tab {
+        margin-right: 5px;
+        font-size: 14px;
+        /* Adjust font size for smaller screens */
+    }
 }

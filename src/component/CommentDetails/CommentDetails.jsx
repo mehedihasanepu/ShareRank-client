@@ -56,9 +56,10 @@ const CommentDetails = () => {
 
     return (
         <div>
-            <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">Total Comment: {postAllComments.length}</h2>
+            <div className="mx-auto text-center md:w-4/12 mb-4">
+                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Total Comment: {postAllComments.length}</h3>
             </div>
+
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">
                     {/* head */}

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TagPostTab = ({ tags }) => {
     return (
-        <div className='grid grid-cols-3 gap-10 mt-10'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mt-10  mx-10 lg:mx-5'>
             {
 
                 tags.map(post => <div key={post._id}>
@@ -24,8 +24,8 @@ const TagPostTab = ({ tags }) => {
                                 <h3 className="text-[17px] font-semibold">{post.title}</h3>
                                 <p className="text-sm">#{post.tag}</p>
                             </div>
-                            <div className="pt-5 flex justify-between">
-                                <div className="flex gap-4">
+                            <div className="pt-5 flex flex-wrap justify-between">
+                                <div className="flex flex-wrap gap-4">
                                     <p className="">{post.upVote} Up vote</p>
                                     <p className="">{post.downVote} Down vote</p>
                                 </div>

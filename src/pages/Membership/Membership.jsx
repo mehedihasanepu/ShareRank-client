@@ -10,10 +10,10 @@ const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY_PK)
 const Membership = () => {
     return (
 
-        <div className="hero subscribe py-12 px-24">
-            <div className=" hero-content bg-slate-300 bg-opacity-60 w-full flex justify-around px-20 py-10 shadow-2xl rounded-2xl ">
+        <div className="hero subscribe py-12 px-5 md:px-24">
+            <div className=" hero-content bg-slate-300 bg-opacity-60 w-full flex justify-around flex-col lg:flex-row px-8 md:px-20 py-10 shadow-2xl rounded-2xl ">
                 <div className="flex-1">
-                    <Lottie className="w-72" animationData={goldSub}></Lottie>
+                    <Lottie className="w-48 md:w-60 lg:w-72" animationData={goldSub}></Lottie>
                 </div>
                 <div className="flex-2">
                     <h2 className="text-3xl font-semibold text-blue-950">Unlock the Next Level with Our  <span className="text-[#ffa200] font-bold">Golden Subscription!</span></h2>

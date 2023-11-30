@@ -10,6 +10,11 @@ import useAuth from "../../../hook/useAuth";
 import SocialLogin from "../../../component/SocialLogin/SocialLogin";
 import "./login.css"
 import toast from "react-hot-toast";
+import loginImg from "../../../assets/icon/login.json"
+import Lottie from "lottie-react";
+
+
+
 const Login = () => {
     const [disabled, setDisabled] = useState(false);
     const { singIn } = useAuth()
@@ -65,7 +70,7 @@ const Login = () => {
             <div className="hero login py-12 px-24">
                 <div className="hero-content bg-slate-50 bg-opacity-30 w-full flex md:flex-row-reverse p-10 shadow-2xl rounded-2xl ">
                     <div className="text-center md:w-1/2 lg:text-left">
-                        {/* <img src={loginImg} alt="" /> */}
+                       <Lottie animationData={loginImg}></Lottie>
                     </div>
 
                     <div className=" md:w-1/2 max-w-sm ">

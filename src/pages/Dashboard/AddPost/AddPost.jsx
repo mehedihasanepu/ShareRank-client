@@ -67,6 +67,9 @@ const AddPost = () => {
 
     return (
         <div>
+            <div className="mx-auto text-center md:w-4/12 ">
+                <h3 className="text-xl lg:text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Add Post</h3>
+            </div>
             {
                 currentUser[0]?.badge === 'bronze' && userPosts.length < 5 || currentUser[0]?.badge === 'gold' ?
                     <div>

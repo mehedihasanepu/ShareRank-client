@@ -38,10 +38,11 @@ const TagPost = () => {
 
     return (
         <div>
-            
-            <h3 className="text-center text-3xl font-semibold text-blue-900 mt-28">All Tag Base Post</h3>
+            <div className="mx-auto text-center md:w-4/12 mt-16 ">
+                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">All Tag Base Post</h3>
+            </div>
 
-            <div className='pt-5'>
+            <div className='pt-10'>
                 <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                     <TabList className="custom-tab-list">
                         {tags.map(tab => (

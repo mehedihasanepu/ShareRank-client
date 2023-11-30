@@ -14,6 +14,8 @@ const Dashboard = () => {
 
         <div className="flex">
             {/* dashboard side bar */}
+
+            
             <div className="w-64 min-h-screen bg-[#c2edffe7]">
                 <div className="bg-[#9fe2ffe7] p-3">
                     {
@@ -100,13 +102,10 @@ const Dashboard = () => {
 
 
             {/* dashboard content */}
-            <div className="flex-1 p-8 pl-28">
+            <div className="flex-1 p-8 pl:0 lg:pl-28">
                 <Outlet></Outlet>
             </div>
         </div>
-
-
-
 
     );
 };

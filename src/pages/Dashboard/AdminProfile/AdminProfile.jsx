@@ -139,7 +139,9 @@ const AdminProfile = () => {
             </div>
 
             <hr className="mt-10" />
-            <h3 className="text-center text-3xl font-semibold text-blue-900">Add New Tag</h3>
+            <div className="mx-auto text-center md:w-4/12 ">
+                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Add New Tag</h3>
+            </div>
             <div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-control w-full ">

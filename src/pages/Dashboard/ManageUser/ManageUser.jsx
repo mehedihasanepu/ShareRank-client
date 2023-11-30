@@ -42,9 +42,9 @@ const ManageUser = () => {
 
     return (
         <div>
-            <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">All Users</h2>
-                <h2 className="text-3xl">Total Users: {users.length}</h2>
+
+            <div className="mx-auto text-center md:w-4/12 mb-4">
+                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Total Users: {users.length}</h3>
             </div>
             <div className="join border border-stone-300">
                 <div>
