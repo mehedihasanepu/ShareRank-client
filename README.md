@@ -69,6 +69,9 @@ This project is an online platform designed to facilitate conversations through 
 
 - Allows admins to create site announcements.
 
+### 14. Reported Activities:
+- Provides admins with reported comments/activities with associated feedback and actions.
+- Admins can take  actions against reported content like admin can delete this comment.
 
 
 This platform is designed to foster engaging conversations and community interaction. The README provides an overview of the functionalities and features offered, aiming to create an intuitive and comprehensive user experience.

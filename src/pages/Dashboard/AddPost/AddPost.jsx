@@ -52,6 +52,7 @@ const AddPost = () => {
         if (postRes.data.insertedId) {
             // show success popup
             reset();
+            window.location.reload();
             Swal.fire({
                 position: "top-end",
                 icon: "success",

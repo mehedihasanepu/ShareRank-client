@@ -10,8 +10,8 @@ const Banner = () => {
     const [upVote, setUpVote] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPosts, setTotalPosts] = useState(0);
-    const { posts} = useAllPost();
-    const { sortedPost, isLoading } = useAllSortPost(upVote, searchText, currentPage);
+    const { posts, isLoading } = useAllPost();
+    const { sortedPost} = useAllSortPost(upVote, searchText, currentPage);
 
 
     useEffect(() => {
