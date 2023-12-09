@@ -54,7 +54,7 @@ const Announcement = () => {
                                 onAutoplayTimeLeft={onAutoplayTimeLeft}
                                 className="mySwiper"
                             >
-                                
+
                                 {announcements.map((announcement) => (
                                     <SwiperSlide className='pt-20' key={announcement._id}>
                                         <div className='w-8/12'>
@@ -64,12 +64,12 @@ const Announcement = () => {
                                         </div>
                                     </SwiperSlide>
                                 ))}
-                            <div className="autoplay-progress" slot="container-end">
-                                <svg viewBox="0 0 48 48" ref={progressCircle}>
-                                    <circle cx="24" cy="24" r="20"></circle>
-                                </svg>
-                                <span ref={progressContent}></span>
-                            </div>
+                                <div className="autoplay-progress" slot="container-end">
+                                    <svg viewBox="0 0 48 48" ref={progressCircle}>
+                                        <circle cx="24" cy="24" r="20"></circle>
+                                    </svg>
+                                    <span ref={progressContent}></span>
+                                </div>
                             </Swiper>
                         </div>
                     </div>

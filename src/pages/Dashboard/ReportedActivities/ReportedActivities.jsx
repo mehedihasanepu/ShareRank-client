@@ -52,7 +52,7 @@ const ReportedActivities = () => {
     return (
         <div>
             <div className="mx-auto text-center md:w-4/12 ">
-                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Total Comment: {feedbacks.length}</h3>
+                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-5 text-blue-900">Total Comment: {feedbacks.length}</h3>
             </div>
 
             <div className="overflow-x-auto">
@@ -103,10 +103,10 @@ const ReportedActivities = () => {
                                     <button
                                         onClick={() => handleDeletePost(feedback._id, feedback.commentId)}
                                         className="btn btn-sm bg-blue-200">
-                                       <div className="flex items-center gap-2">
+                                        <div className="flex items-center gap-2">
                                             Delete
                                             <FaTrashAlt className="text-[17px]"></FaTrashAlt>
-                                       </div>
+                                        </div>
                                     </button>
                                 </td>
                             </tr>)
