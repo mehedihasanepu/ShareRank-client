@@ -23,7 +23,7 @@ const Navbar = () => {
                 <div className="flex flex-row items-center md:px-5 justify-between">
                    
                     <Link to='/'>
-                        <img className="w-[170px] h-[70px]" src={logo} alt="" />
+                        <img className="w-[160px] h-[65px]" src={logo} alt="" />
 
                     </Link>
                     <div className="lg:hidden flex">

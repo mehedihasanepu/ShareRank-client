@@ -3,6 +3,8 @@ import useAllSortPost from "../../../hook/useAllSortPost";
 import useAllPost from "../../../hook/useAllPost";
 import { Link } from "react-router-dom";
 import Loading from "../../../component/Loading/Loading";
+import like from "../../../assets/icon/like.png"
+import dislike from "../../../assets/icon/dislike.png"
 import "./banner.css"
 
 const Banner = () => {
@@ -11,7 +13,7 @@ const Banner = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPosts, setTotalPosts] = useState(0);
     const { posts, isLoading } = useAllPost();
-    const { sortedPost} = useAllSortPost(upVote, searchText, currentPage);
+    const { sortedPost } = useAllSortPost(upVote, searchText, currentPage);
 
 
     useEffect(() => {
@@ -22,7 +24,7 @@ const Banner = () => {
         return <Loading></Loading>
     }
 
-    const itemsPerPage = 5;
+    const itemsPerPage = 6;
     const totalPages = Math.ceil(totalPosts / itemsPerPage);
 
 
@@ -103,12 +105,31 @@ const Banner = () => {
                                         <h3 className="text-[17px] font-semibold">{post.title}</h3>
                                         <p className="text-sm">#{post.tag}</p>
                                     </div>
-                                    <div className="pt-5 flex flex-wrap justify-between">
+                                    <div>
+                                        <p>{post.descriptions.slice(0, 60)} ....</p>
+
+                                    </div>
+                                    <div>{post.image ?
+                                        <figure className=""><img className="h-80 w-full rounded-xl mt-3" src={post.image} alt="post image!" /></figure>
+                                        : ""
+                                    }
+                                    </div>
+                                    <div className="pt-4 flex flex-wrap justify-between">
                                         <div className="flex flex-wrap gap-4">
-                                            <p >{post.upVote} Up vote</p>
-                                            <p >{post.downVote} Down vote</p>
+                                            <div className="flex justify-center items-center gap-1">
+                                                <img className="h-[29px] w-[29px] mb-2" src={like} alt="" />
+                                                <p className="text-lg">{post.upVote}</p>
+                                            </div>
+
+
+                                            <div className="flex justify-center items-center gap-1">
+                                                <img className="h-7 w-7 mt-2" src={dislike} alt="" />
+                                                <p className="text-lg">{post.downVote}</p>
+                                            </div>
+
+
                                         </div>
-                                        <p >{post?.comment ? post.comment : 0} Comment</p>
+                                        <p className="mt-3">{post?.comment ? post.comment : 0} Comment</p>
                                     </div>
                                 </div>
                             </Link>

@@ -2,13 +2,15 @@ import { useParams } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import useAllPost from "../../hook/useAllPost";
 import useAxiosSecure from "../../hook/useAxiosSecure";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import useComments from "../../hook/useComments";
 import useAxiosPublic from "../../hook/useAxiosPublic";
 import Lottie from "lottie-react";
 import shareIcon from "../../assets/icon/Share.json"
 import { FacebookIcon, FacebookShareButton, FacebookShareCount, LinkedinIcon, LinkedinShareButton, TelegramIcon, TelegramShareButton, TwitterShareButton, WhatsappIcon, WhatsappShareButton, XIcon } from "react-share";
+import like from "../../assets/icon/like.png"
+import dislike from "../../assets/icon/dislike.png"
 
 const PostDetails = () => {
     const axiosSecure = useAxiosSecure()
@@ -17,29 +19,32 @@ const PostDetails = () => {
     const { comments, refetch } = useComments()
     const { posts, isLoading, refetch: allPostRefetch } = useAllPost();
     const { id } = useParams()
+    
+    
+        useEffect(() => {
+            window.scrollTo(0, 0)
+        }, [])
 
     if (isLoading) {
         return <Loading></Loading>
-    }
+    }    
     console.log(posts);
 
 
     const postDetails = posts.find(post => post._id === id)
     console.log(postDetails);
-    const { _id, authorEmail, authorImage, authorName, descriptions, downVote, postTime, tag, title, upVote } = postDetails
+    const { _id, authorEmail, authorImage, authorName, descriptions, downVote, postTime, tag, title, upVote, image } = postDetails
 
 
 
 
     if (isLoading) {
         return <Loading></Loading>
-    }
+    }    
     const commentDetails = comments.filter(comment => comment.postTitle === title)
     console.log(commentDetails.length);
 
-
-
-
+    
 
 
     const handleUpVote = async () => {
@@ -130,10 +135,7 @@ const PostDetails = () => {
 
 
     return (
-        <div className="max-w-screen-lg mx-auto py-10 px-5 md:px-0">
-
-
-
+        <div className="max-w-screen-lg mx-auto pt-5 pb-10 px-5 md:px-0">
 
 
 
@@ -165,17 +167,29 @@ const PostDetails = () => {
                             <p>{descriptions}</p>
                         </div>
 
-
+                        <div>{image ?
+                            <figure className=""><img className="h-[350px] w-full rounded-lg mt-3" src={image} alt="post image!" /></figure>
+                            : ""
+                        }
+                        </div>
 
                         <div className="pt-5 flex justify-between items-center">
                             <div className="flex gap-4">
                                 <div className="flex gap-2 items-center">
                                     <p className="text-lg">{upVote}</p>
-                                    <button onClick={handleUpVote} className="btn btn-sm">Up Vote</button>
+                                    <button onClick={handleUpVote} >
+                                        <div>
+                                            <img className="h-[31px] w-[31px] mb-2" src={like} alt="" />
+                                        </div>
+                                    </button>
                                 </div>
                                 <div className="flex gap-2 items-center ml-3">
                                     <p className="text-lg">{downVote}</p>
-                                    <button onClick={handleDownVote} className="btn btn-sm">Down vote</button>
+                                    <button onClick={handleDownVote}>
+                                        <div>
+                                            <img className="h-8 w-8 mt-2" src={dislike} alt="" />
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                             <p className="">{commentDetails.length ? commentDetails.length : 0} Comment</p>

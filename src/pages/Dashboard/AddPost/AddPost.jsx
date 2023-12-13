@@ -8,6 +8,11 @@ import useCurrentUser from "../../../hook/useCurrentUser";
 import useUserAllPost from "../../../hook/useUserAllPost";
 import { Link } from "react-router-dom";
 import useTags from "../../../hook/useTags";
+import useAxiosPublic from "../../../hook/useAxiosPublic";
+
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
+
 
 
 const AddPost = () => {
@@ -18,17 +23,24 @@ const AddPost = () => {
     const { currentUser } = useCurrentUser();
     const { userPosts } = useUserAllPost()
     const { tags } = useTags();
-
+    const axiosPublic = useAxiosPublic()
     console.log(tags);
 
     const options = tags.map(tag => ({ label: tag.name }));
 
     const handleSelect = (value) => {
         setTag(value.label);
-    } 
+    }
 
     const onSubmit = async (data) => {
         console.log(data);
+        const imageFile = { image: data.image[0] }
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+
 
         const postItem = {
             authorImage: user.photoURL,
@@ -36,6 +48,7 @@ const AddPost = () => {
             authorEmail: user.email,
             title: data.title,
             tag: tag,
+            image: res.data.data.display_url,
             upVote: data.upVote,
             downVote: data.downVote,
             descriptions: data.descriptions,
@@ -94,6 +107,12 @@ const AddPost = () => {
                                 <Select onChange={handleSelect} options={options} />
 
                             </div>
+
+
+                            <div className="form-control w-full my-6">
+                                <input {...register('image', { required: true })} type="file" className="file-input file-input-bordered file-input-info w-full max-w-xs" />
+                            </div>
+
 
                             <div className="flex gap-6">
 
