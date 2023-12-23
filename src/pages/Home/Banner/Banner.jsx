@@ -6,6 +6,7 @@ import Loading from "../../../component/Loading/Loading";
 import like from "../../../assets/icon/like.png"
 import dislike from "../../../assets/icon/dislike.png"
 import "./banner.css"
+import useComments from "../../../hook/useComments";
 
 const Banner = () => {
     const [searchText, setSearchText] = useState('');
@@ -14,6 +15,7 @@ const Banner = () => {
     const [totalPosts, setTotalPosts] = useState(0);
     const { posts, isLoading } = useAllPost();
     const { sortedPost } = useAllSortPost(upVote, searchText, currentPage);
+    const { comments }=useComments()
 
 
     useEffect(() => {
@@ -45,6 +47,7 @@ const Banner = () => {
 
 
 
+    
 
 
     return (
@@ -126,10 +129,8 @@ const Banner = () => {
                                                 <img className="h-7 w-7 mt-2" src={dislike} alt="" />
                                                 <p className="text-lg">{post.downVote}</p>
                                             </div>
-
-
                                         </div>
-                                        <p className="mt-3">{post?.comment ? post.comment : 0} Comment</p>
+                                        <p className="mt-3">{comments.filter(comment => comment.postId === post._id) ? comments.filter(comment => comment.postId === post._id).length : 0} Comment</p>
                                     </div>
                                 </div>
                             </Link>

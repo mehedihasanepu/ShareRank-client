@@ -19,32 +19,31 @@ const PostDetails = () => {
     const { comments, refetch } = useComments()
     const { posts, isLoading, refetch: allPostRefetch } = useAllPost();
     const { id } = useParams()
-    
-    
-        useEffect(() => {
-            window.scrollTo(0, 0)
-        }, [])
+
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
 
     if (isLoading) {
         return <Loading></Loading>
-    }    
-    console.log(posts);
+    }
+  
 
 
     const postDetails = posts.find(post => post._id === id)
     console.log(postDetails);
     const { _id, authorEmail, authorImage, authorName, descriptions, downVote, postTime, tag, title, upVote, image } = postDetails
 
-
-
-
     if (isLoading) {
         return <Loading></Loading>
-    }    
-    const commentDetails = comments.filter(comment => comment.postTitle === title)
+    }
+
+
+
+    const commentDetails = comments.filter(comment => comment.postId === _id)
     console.log(commentDetails.length);
 
-    
 
 
     const handleUpVote = async () => {
@@ -206,7 +205,7 @@ const PostDetails = () => {
                                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                                     </form>
 
-                                   <div className="flex gap-3">
+                                    <div className="flex gap-3">
                                         <FacebookShareButton url={shareUrl} className="Demo__some-network__share-button">
                                             <FacebookIcon size={32} round />
                                         </FacebookShareButton>
@@ -253,7 +252,7 @@ const PostDetails = () => {
                                                 <LinkedinIcon size={32} round />
                                             </LinkedinShareButton>
                                         </div>
-                                   </div>
+                                    </div>
 
 
                                 </div>
