@@ -1,6 +1,6 @@
 import toast from "react-hot-toast";
 import useAuth from "../../hook/useAuth";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useAnnouncement from "../../hook/useAnnouncement";
 import { IoNotifications } from "react-icons/io5";
 import useCurrentUser from "../../hook/useCurrentUser";
@@ -9,7 +9,7 @@ const UserProfile = () => {
     const { user, logOut } = useAuth()
     const { announcements } = useAnnouncement()
     const { currentUser } = useCurrentUser()
-    console.log(currentUser[0]?.role);
+    const navigate =useNavigate()
 
 
     const handleSingOut = () => {
@@ -20,6 +20,7 @@ const UserProfile = () => {
             .catch(error => {
                 console.error(error);
                 toast.success('Sing Out SuccessFull')
+                navigate("/")
             })
     }
 
