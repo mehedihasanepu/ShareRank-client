@@ -80,13 +80,13 @@ const AddPost = () => {
 
 
     return (
-        <div>
+        <div className="lg:mx-0 md:mx-10 mx-5">
             <div className="mx-auto text-center md:w-4/12 ">
-                <h3 className="text-xl lg:text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">Add Post</h3>
+                <h3 className="text-xl lg:text-2xl uppercase font-semibold border-y-2 border-blue-100 py-3 text-blue-900">Add Post</h3>
             </div>
             {
                 currentUser[0]?.badge === 'bronze' && userPosts.length < 5 || currentUser[0]?.badge === 'gold' ?
-                    <div>
+                    <div className="max-w-screen-md mx-auto mt-5 bg-blue-50 p-5 rounded-2xl ">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-control w-full ">
                                 <label className="label">
@@ -119,7 +119,7 @@ const AddPost = () => {
                                 {/* upVote */}
                                 <div className="form-control w-full my-6">
                                     <label className="label">
-                                        <span className="label-text">UpVote</span>
+                                        <span className="label-text">Like</span>
                                     </label>
                                     <input
                                         type="number"
@@ -133,7 +133,7 @@ const AddPost = () => {
                                 {/* DownVote */}
                                 <div className="form-control w-full my-6">
                                     <label className="label">
-                                        <span className="label-text">DownVote</span>
+                                        <span className="label-text">Dislike</span>
                                     </label>
                                     <input
                                         type="number"

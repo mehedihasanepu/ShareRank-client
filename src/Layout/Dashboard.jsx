@@ -1,4 +1,4 @@
-import { FaBullhorn,  FaColumns,  FaHome,  FaRegChartBar, FaUser, FaUserFriends, FaUsers, } from "react-icons/fa";
+import { FaBullhorn,   FaHome,  FaRegChartBar, FaUser,  FaUsers, } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useAdmin from "../hook/useAdmin";
 import useAuth from "../hook/useAuth";
@@ -37,7 +37,7 @@ const Dashboard = () => {
                 <ul className="menu p-4">
 
                     {
-                        isAdmin ? <>
+                        isAdmin && <>
                             <li>
                                 <NavLink to="/dashboard/adminProfile">
                                     <FaUser></FaUser>
@@ -60,28 +60,7 @@ const Dashboard = () => {
                             </li>
 
                         </>
-                            :
-                            <>
-                                <li>
-                                    <NavLink to="/dashboard/userProfile">
-                                        <FaUser></FaUser>
-                                        My profile</NavLink>
-                                </li>
-
-                                <li>
-                                    <NavLink to="/dashboard/addPost">
-                                        <FaColumns></FaColumns>
-                                        Add Post</NavLink>
-                                </li>
-                                <li>
-                                    <NavLink to="/dashboard/myPost">
-                                        <FaUserFriends></FaUserFriends>
-                                        My Posts
-                                        {/* ({cart.length}) */}
-                                    </NavLink>
-                                </li>
-                              
-                            </>
+                            
                     }
 
                     {/* shared nav links */}

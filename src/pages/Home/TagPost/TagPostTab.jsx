@@ -26,8 +26,8 @@ const TagPostTab = ({ tags }) => {
                             </div>
                             <div className="pt-5 flex flex-wrap justify-between">
                                 <div className="flex flex-wrap gap-4">
-                                    <p className="">{post.upVote} Up vote</p>
-                                    <p className="">{post.downVote} Down vote</p>
+                                    <p className="">{post.upVote} Like</p>
+                                    <p className="">{post.downVote} Dislike</p>
                                 </div>
                                 <p className="">{post?.comment ? post.comment : 0} Comment</p>
                             </div>

@@ -46,7 +46,26 @@ export const router = createBrowserRouter([
             {
                 path: 'signUp',
                 element: <SignUp></SignUp>
-            }
+            },
+            {
+                path: 'userProfile',
+                element: <UserProfileDashboard></UserProfileDashboard>
+            },
+            {
+                path: 'addPost',
+                element: <PrivateRoute><AddPost></AddPost></PrivateRoute> 
+            },
+            {
+                path: 'myPost',
+                element: <PrivateRoute><MyPost></MyPost></PrivateRoute>
+            },
+            {
+                path: 'myPost/comments/:id',
+                element: <PrivateRoute><CommentDetails></CommentDetails></PrivateRoute>
+            },
+
+
+
         ]
     },
 
@@ -58,25 +77,7 @@ export const router = createBrowserRouter([
         children: [
 
             // normal User Routes 
-            {
-                path: 'userProfile',
-                element: <UserProfileDashboard></UserProfileDashboard>
-            },
-            {
-                path: 'addPost',
-                element: <AddPost></AddPost>
-            },
-            {
-                path: 'myPost',
-                element: <MyPost></MyPost>
-            },
-            {
-                path: 'myPost/comments/:id',
-                element: <CommentDetails></CommentDetails>
-            },
-
-
-
+           
             // admin only routes
             {
                 path: 'adminProfile',

@@ -36,7 +36,7 @@ const MyPost = () => {
     return (
         <div className="overflow-x-auto">
             <div className="mx-auto text-center md:w-4/12 mb-3">
-                <h3 className="text-3xl uppercase font-semibold border-y-4 border-blue-100 py-4 text-blue-900">
+                <h3 className="text-xl lg:text-2xl uppercase font-semibold border-y-2 border-blue-100 py-3 text-blue-900">
                     Total Post: {userPosts.length}
                 </h3>
             </div>
@@ -46,8 +46,8 @@ const MyPost = () => {
                     <tr>
                         <th></th>
                         <th>Title</th>
-                        <th>Up Vote</th>
-                        <th>Down Vote</th>
+                        <th>Like</th>
+                        <th>Dislike</th>
                         <th>Comments</th>
                         <th>Action</th>
                     </tr>

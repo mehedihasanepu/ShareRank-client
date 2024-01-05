@@ -32,15 +32,18 @@ const UserProfileDashboard = () => {
                     <div className="text-center">
                         <h2 className="text-2xl font-bold ">{name}</h2>
                         <h2 className="font-semibold ">{userEmail}</h2>
-                        <h3 className="text-2xl font-semibold">Badge: {badge}</h3>
+                        <h3 className="text-xl font-semibold">Badge: {badge}</h3>
                     </div>
 
                 </div>
             </div>
+            <h2 className="text-center text-xl font-bold border-b">
+                Recent Posts
+            </h2>
 
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col justify-center pt-5 gap-5">
                 {
-                    slicePost.map(post => <div key={post._id} className="max-w-screen-md mx-auto bg-base-100 p-7 rounded-lg shadow-xl">
+                    slicePost.map(post => <div key={post._id} className="max-w-screen-md mx-auto w-full bg-base-100 p-7 rounded-lg shadow-xl">
                         <div className="flex gap-5">
                             <div className="avatar online">
                                 <div className="w-16 rounded-full">

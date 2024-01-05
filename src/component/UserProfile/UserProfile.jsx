@@ -3,10 +3,14 @@ import useAuth from "../../hook/useAuth";
 import { NavLink } from "react-router-dom";
 import useAnnouncement from "../../hook/useAnnouncement";
 import { IoNotifications } from "react-icons/io5";
+import useCurrentUser from "../../hook/useCurrentUser";
 const UserProfile = () => {
 
     const { user, logOut } = useAuth()
     const { announcements } = useAnnouncement()
+    const { currentUser } = useCurrentUser()
+    console.log(currentUser[0]?.role);
+
 
     const handleSingOut = () => {
         logOut()
@@ -50,14 +54,28 @@ const UserProfile = () => {
                                 <p>{user.email}</p>
                             </li>
                             <div >
+                                    {
 
-                                <li>
-                                    <a>
-                                        <NavLink to="/dashboard">
-                                                <button className="btn btn-sm ">Dashboard</button>
-                                        </NavLink>
-                                    </a>
-                                </li>
+                                        currentUser[0]?.role === "admin" ? (
+                                            <li>
+                                                <a>
+                                                    <NavLink to="/dashboard">
+                                                        <button className="btn btn-sm ">Dashboard</button>
+                                                    </NavLink>
+                                                </a>
+                                            </li>
+                                        ) : (
+                                            <li>
+                                                <a>
+                                                    <NavLink to="/userProfile">
+                                                        <button className="btn btn-sm ">My profile</button>
+                                                    </NavLink>
+                                                </a>
+                                            </li>
+                                        )
+
+                                    }
+
                                 <button onClick={handleSingOut} className="form-control btn btn-sm ml-3">
                                     <div className="flex items-center">
                                         <p >Sing Out</p>

@@ -21,13 +21,15 @@ const Navbar = () => {
         <div >
             <div className="max-w-screen-xl mx-auto mb-5 py-3 bg-blue-50 rounded-b-2xl">
                 <div className="flex flex-row items-center md:px-5 justify-between">
-                   
+
                     <Link to='/'>
                         <img className="w-[160px] h-[65px]" src={logo} alt="" />
 
                     </Link>
                     <div className="lg:hidden flex">
-                        <UserProfile></UserProfile>
+                        {
+                            user ? <UserProfile></UserProfile> : null
+                        }
                         <div className=" dropdown flex-row-reverse">
                             <label tabIndex={0} className="px-1">
 
@@ -49,9 +51,9 @@ const Navbar = () => {
                                             <NavLink to="/membership">Membership</NavLink>
                                         </a>
                                     </li>
-                                   
 
-                                    
+
+
 
                                     {
                                         user ? null :
@@ -71,15 +73,31 @@ const Navbar = () => {
                                     <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/">Home</NavLink>
                                 </a >
                             </li>
+
+                            <li>
+                                <a>
+                                    <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/addPost">Add Post</NavLink>
+                                </a>
+                            </li>
+                            <li>
+                                <a>
+                                    <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/myPost">My Posts</NavLink>
+                                </a>
+                            </li>
                             <li>
                                 <a>
                                     <NavLink className="text-center px-2 py-[5px] bg-gray-100 rounded-md" to="/membership">Membership</NavLink>
                                 </a>
                             </li>
-                  
-                           
+
+
+
+
+
                         </ul>
-                        <UserProfile></UserProfile>
+                        {
+                            user ? <UserProfile></UserProfile> : null
+                        }
                         {
                             user ? null :
                                 <div className="space-x-2">

@@ -1,4 +1,3 @@
-
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hook/useAuth";
 import useAxiosPublic from "../../hook/useAxiosPublic";
@@ -7,7 +6,6 @@ import googleIcon from "../../assets/icon/google.gif"
 
 const SocialLogin = () => {
     const { googleSignIn } = useAuth()
-
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
 
